@@ -2,7 +2,7 @@ mod utility;
 
 fn main() {
     let alice = utility::Alice {interested: true};
-    let bob = utility::Bob {interested: false};
+    let bob = utility::Bob {interested: true};
 
     let alice_shift = 3;
     let bob_shift = 2;

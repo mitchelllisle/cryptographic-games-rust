@@ -46,20 +46,26 @@ impl CardDeck {
         five and outputs a Boolean value as follows: if there are 3 kings in a set of 5, output
         true, else output false. Note that the position of the kings does not matter. If we have
         kings in positions 1, 2, and 5, the function will output true.
+
+        We need three kings in a row for this to return true.
          */
-        let mut king_count = 0;
-
         assert_eq!(self.cards.len(), 5);
+        let mut positions: Vec<usize> = vec![];
 
-        for card in self.cards.iter() {
+        for (i, card) in self.cards.iter().enumerate() {
             match card {
                 Card::King => {
-                    king_count += 1
+                    positions.push( i)
                 },
                 _ => {}
             }
         }
-        return if king_count == 3 { true } else { false }
+        return if (positions[1] == positions[0] + 1) && (positions[2] == positions[1] + 1) {
+            true
+        } else {
+            false
+        }
+
     }
 }
 
