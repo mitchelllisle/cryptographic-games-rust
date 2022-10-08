@@ -25,8 +25,8 @@ impl CardDeck {
     */
     pub fn join(a: CardDeck, b: CardDeck) -> CardDeck {
         let mut deck = a;
-        deck.cards.extend(b.cards);
         deck.cards.extend(vec![Card::King]);
+        deck.cards.extend(b.cards);
         deck
     }
 
@@ -49,9 +49,7 @@ impl CardDeck {
          */
         let mut king_count = 0;
 
-        if self.cards.len() != 5 {
-            return false
-        }
+        assert_eq!(self.cards.len(), 5);
 
         for card in self.cards.iter() {
             match card {
